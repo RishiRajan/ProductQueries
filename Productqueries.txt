@@ -1,30 +1,29 @@
 // Find all the information about each product
-db.products.find({})
+db.products.find({}).pretty()
 
 // Find the product price which are between 400 to 800
-db.products.find({ "price": { $gt: 400, $lt: 800 } })
+db.products.find({ "price": { $gt: 400, $lt: 800 } }).pretty()
 
 // Find the product price which are not between 400 to 600
-db.products.find({ "price": { $not: { $gt: 400, $lt: 600 } } })
+db.products.find({ "price": { $not: { $gt: 400, $lt: 600 } } }).pretty()
 
 // List the four products which are greater than 500 in price
-db.products.find({ "price": { $gt: 500 } }).limit(4)
+db.products.find({ "price": { $gt: 500 } }).limit(4).pretty()
 
 // Find the product name and product material of each product
-db.products.find({}, { "name": 1, "material": 1 })
+db.products.find({}, { "name": 1, "material": 1 }).pretty()
 
 // Find the product with a row id of 10
-db.products.findOne({ "id": 10 })
+db.products.findOne({ "id": 10 }).pretty()
 
 // Find only the product name and product material
-db.products.find({}, { "name": 1, "material": 1, "_id": 0 })
+db.products.find({}, { "name": 1, "material": 1, "_id": 0 }).pretty()
 
 // Find all products which contain the value of "soft" in product material
-db.products.find({ "material": /soft/ })
+db.products.find({ "material": /soft/ }).pretty()
 
 // Find products which contain product color indigo and product price 492.00
-db.products.find({ "color": "indigo", "price": 492.00 })
+db.products.find({ "color": "indigo", "price": 492.00 }).pretty()
 
 // Delete the products which have the same product price value
 db.products.deleteMany({$expr: {$eq: ["$price", "$compare_price"]}})
-
